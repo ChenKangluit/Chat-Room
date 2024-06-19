@@ -40,7 +40,7 @@ def main():
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
-        context.load_verify_locations("D:/path/to/ca_cert.pem")
+        context.load_verify_locations("..\\path\\to\\ca_cert.pem")
         context.check_hostname = False  # 关闭主机名验证
         context.verify_mode = ssl.CERT_NONE  # 禁用服务器证书验证
 

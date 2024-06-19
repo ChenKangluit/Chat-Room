@@ -33,6 +33,7 @@ def handle_client(client_socket, addr):
         client_socket.send(cipher_suite.encrypt(welcome_message.encode('utf-8')))
         print(f"已发送欢迎消息给 {nickname}")
 
+        # 使用线程锁 (clients_lock) 来确保多个线程在访问和修改这些共享资源时不会出现数据不一致的问题。
         with clients_lock:
             clients[client_socket] = (nickname, cipher_suite)
             addresses[client_socket] = addr
@@ -91,8 +92,8 @@ def main():
         print(f"服务器启动在 {HOST}:{PORT}")
 
         context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-        context.load_cert_chain(certfile="D:/path/to/server_cert.pem", keyfile="D:/path/to/server_key.pem")
-        context.load_verify_locations("D:/path/to/ca_cert.pem")
+        context.load_cert_chain(certfile="..\\path\\to\server_cert.pem", keyfile="..\\path\\to\server_key.pem")
+        context.load_verify_locations("..\\path\\to\ca_cert.pem")
         print("SSL 上下文已加载")
 
         while True:
