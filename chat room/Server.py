@@ -92,8 +92,8 @@ def main():
         print(f"服务器启动在 {HOST}:{PORT}")
 
         context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-        context.load_cert_chain(certfile="..\\path\\to\server_cert.pem", keyfile="..\\path\\to\server_key.pem")
-        context.load_verify_locations("..\\path\\to\ca_cert.pem")
+        context.load_cert_chain(certfile="D:/path/to/server_cert.pem", keyfile="D:/path/to/server_key.pem")
+        context.load_verify_locations("D:/path/to/ca_cert.pem")
         print("SSL 上下文已加载")
 
         while True:
